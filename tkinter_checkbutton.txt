@@ -1,0 +1,168 @@
+The Tkinter Checkbutton Widget
+The Checkbutton widget is a standard Tkinter widgets used to implement on-off selections. Checkbuttons can contain text or images, and you can associate a Python function or method with each button. When the button is pressed, Tkinter calls that function or method.
+
+The button can only display text in a single font, but the text may span more than one line. In addition, one of the characters can be underlined, for example to mark a keyboard shortcut. By default, the Tab key can be used to move to a button widget.
+
+Each Checkbutton widget should be associated with a variable.
+
+When to use the Checkbutton Widget
+
+The checkbutton widget is used to choose between two distinct values (usually switching something on or off). Groups of checkbuttons can be used to implement “many-of-many” selections.
+
+To handle “one-of-many” choices, use Radiobutton and Listbox widgets.
+
+Patterns #
+
+(Also see the Button patterns).
+
+To use a Checkbutton, you must create a Tkinter variable. To inspect the button state, query the variable.
+
+from Tkinter import *
+
+master = Tk()
+
+var = IntVar()
+
+c = Checkbutton(master, text="Expand", variable=var)
+c.pack()
+
+mainloop()
+By default, the variable is set to 1 if the button is selected, and 0 otherwise. You can change these values using the onvalue and offvalue options. The variable doesn’t have to be an integer variable:
+
+    var = StringVar()
+    c = Checkbutton(
+        master, text="Color image", variable=var,
+        onvalue="RGB", offvalue="L"
+        )
+If you need to keep track of both the variable and the widget, you can simplify your code somewhat by attaching the variable to the widget reference object.
+
+ 
+    v = IntVar()
+    c = Checkbutton(master, text="Don't show this again", variable=v)
+    c.var = v
+If your Tkinter code is already placed in a class (as it should be), it is probably cleaner to store the variable in an attribute, and use a bound method as callback:
+
+    def __init__(self, master):
+        self.var = IntVar()
+        c = Checkbutton(
+            master, text="Enable Tab",
+            variable=self.var,
+            command=self.cb)
+        c.pack()
+
+    def cb(self, event):
+        print "variable is", self.var.get()
+Reference #
+
+Checkbutton(master=None, **options) (class) [#]
+A toggle button.
+
+master
+Parent widget.
+**options
+Widget options. See the description of the config method for a list of available options.
+
+config(**options) [#]
+Modifies one or more widget options. If no options are given, the method returns a dictionary containing all current option values.
+
+**options
+Widget options.
+activebackground=
+The background color to use when the button is activated. Default value is system specific. (the database name is activeBackground, the class is Foreground)
+activeforeground=
+The foreground color to use when the button is activated. Default value is system specific. (activeForeground/Background)
+anchor=
+Controls where in the button the text (or image) should be located. Use one of N, NE, E, SE, S, SW, W, NW, or CENTER. Default is CENTER. If you change this, it is probably a good idea to add some padding as well, using the padx and/or pady options. (anchor/Anchor)
+background=
+The button background color. The default is system specific. (background/Background)
+bg=
+Same as background.
+bitmap=
+The bitmap to display in the widget. If the image option is given, this option is ignored. 
+You can either use a built-in bitmap, or load a bitmap from an XBM file. To load the bitmap from file, just prefix the filename with an at-sign (for example “@sample.xbm”). (bitmap/Bitmap)
+borderwidth=
+The width of the button border. The default is system specific, but is usually one or two pixels. (borderWidth/BorderWidth)
+bd=
+Same as borderwidth.
+command=
+A function or method that is called when the button is pressed. The callback can be a function, bound method, or any other callable Python object. No default. (command/Command)
+compound=
+Default is NONE. (compound/Compound)
+cursor=
+The cursor to show when the mouse pointer is moved over the button. (cursor/Cursor)
+disabledforeground=
+The color to use when the button is disabled. The background is shown in the background color. (disabledForeground/DisabledForeground)
+font=
+The font to use in the button. The button can only contain text in a single font. The default is system specific. (font/Font)
+foreground=
+The button foreground color. The default is system specific. (foreground/Foreground)
+fg=
+Same as foreground.
+height=
+The size of the button. If the button displays text, the size is given in text units. If the button displays an image, the size is given in pixels (or screen units). If the size is omitted, it is calculated based on the button contents. (height/Height)
+highlightbackground=
+Default value is system specific. (highlightBackground/HighlightBackground)
+highlightcolor=
+Default value is system specific. (highlightColor/HighlightColor)
+highlightthickness=
+Default value is 1. (highlightThickness/HighlightThickness)
+image=
+The image to display in the widget. If specified, this takes precedence over the text and bitmap options. No default. (image/Image)
+indicatoron=
+Controls if the indicator should be drawn or not. This is on by default. 
+Setting this option to false means that the relief will be used as the indicator. If the button is selected, it is drawn as SUNKEN instead of RAISED. (indicatorOn/IndicatorOn)
+justify=
+Defines how to align multiple lines of text. Use LEFT, RIGHT, or CENTER (default). (justify/Justify)
+offrelief=
+Default is raised. (offRelief/OffRelief)
+offvalue=
+The value corresponding to a non-checked button. The default is 0. (offValue/Value)
+onvalue=
+The value corresponding to a checked button. The default is 1. (onValue/Value)
+overrelief=
+No default value. (overRelief/OverRelief)
+padx=
+Button padding. Default value is 1. (padX/Pad)
+pady=
+Button padding. Default value is 1. (padY/Pad)
+relief=
+Border decoration. This is usually FLAT for checkbuttons, unless they use the border as indicator (via the indicatoron option). (relief/Relief)
+selectcolor=
+Color to use for the selector. Default value is system specific. (selectColor/Background)
+selectimage=
+Graphic image to use for the selector. No default. (selectImage/SelectImage)
+state=
+Button state. One of NORMAL, ACTIVE or DISABLED. Default is NORMAL. (state/State)
+takefocus=
+Indicates that the user can use the Tab key to move to this button. Default is an empty string, which means that the button accepts focus only if it has any keyboard bindings (default is on, in other words). (takeFocus/TakeFocus)
+text=
+The text to display in the button. The text can contain newlines. If the bitmap or image options are used, this option is ignored. (text/Text)
+textvariable=
+Associates a Tkinter variable (usually a StringVar) with the button. If the variable is changed, the button text is updated. 
+Also see the variable option. (textVariable/Variable)
+underline=
+Which character to underline, if any. Default value is -1 (no underline). (underline/Underline)
+variable=
+Associates a Tkinter variable to the button. When the button is pressed, the variable is toggled between offvalue and onvalue. Explicit changes to the variable are automatically reflected by the buttons. (variable/Variable)
+width=
+The size of the button. See height for details. (width/Width)
+wraplength=
+Determines when a button’s text should be wrapped into multiple lines. This is given in screen units. Default is no wrapping. (wrapLength/WrapLength)
+
+deselect() [#]
+Deselects the checkbox; that is, sets the value to offvalue.
+
+flash() [#]
+Redraws the button several times, alternating between active and normal appearance.
+
+invoke() [#]
+Calls the command associated with the button.
+
+select() [#]
+Selects the button; that is, sets the value to onvalue.
+
+toggle() [#]
+Toggles the button.
+
+ 
+back next

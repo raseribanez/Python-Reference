@@ -1,0 +1,68 @@
+The Tkinter OptionMenu Widget
+The OptionMenu class is a helper class that creates a popup menu, and a button to display it. The option menu is similar to the combobox widgets commonly used on Windows.
+
+To get the currently selected value from an option menu, you have to pass in a Tkinter variable. See the patterns section for some examples.
+
+Patterns #
+
+To create an option menu, call the OptionMenu class constructor, and pass in the variable and a list of options.
+
+from Tkinter import *
+
+master = Tk()
+
+variable = StringVar(master)
+variable.set("one") # default value
+
+w = OptionMenu(master, variable, "one", "two", "three")
+w.pack()
+
+mainloop()
+To get the selected option, use get on the variable:
+
+ 
+from Tkinter import *
+
+master = Tk()
+
+var = StringVar(master)
+var.set("one") # initial value
+
+option = OptionMenu(master, var, "one", "two", "three", "four")
+option.pack()
+
+#
+# test stuff
+
+def ok():
+    print "value is", var.get()
+    master.quit()
+
+button = Button(master, text="OK", command=ok)
+button.pack()
+
+mainloop()
+The following example shows how to create an option menu from a list of options:
+
+from Tkinter import *
+
+# the constructor syntax is:
+# OptionMenu(master, variable, *values)
+
+OPTIONS = [
+    "egg",
+    "bunny",
+    "chicken"
+]
+
+master = Tk()
+
+variable = StringVar(master)
+variable.set(OPTIONS[0]) # default value
+
+w = apply(OptionMenu, (master, variable) + tuple(OPTIONS))
+w.pack()
+
+mainloop()
+ 
+back next
