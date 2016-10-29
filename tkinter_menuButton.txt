@@ -1,0 +1,94 @@
+The Tkinter Menubutton Widget
+The Menubutton widget displays popup or pulldown menu when activated.
+
+This widget is not documented in this version of this document. If you really need it, check the Tk documentation.
+
+When to use the Menubutton Widget
+
+This widget is used to implement various kinds of menus. In earlier versions of Tkinter, it was used to implement toplevel menus, but this is now done with the Menu widget.
+
+Patterns #
+
+Nothing here.
+
+Reference #
+
+Menubutton(master=None, **options) (class) [#]
+A button used to post a menu pane.
+
+master
+Parent widget.
+**options
+Widget options. See the description of the config method for a list of available options.
+
+config(**options) [#]
+Modifies one or more widget options. If no options are given, the method returns a dictionary containing all current option values.
+
+**options
+Widget options.
+activebackground=
+Default is system specific. (the database name is activeBackground, the class is Foreground)
+activeforeground=
+Default is system specific. (activeForeground/Background)
+anchor=
+Default is CENTER. (anchor/Anchor)
+background=
+Default is system specific. (background/Background)
+bg=
+Same as background.
+bitmap=
+No default value. (bitmap/Bitmap)
+borderwidth=
+Default is 2. (borderWidth/BorderWidth)
+bd=
+Same as borderwidth.
+compound=
+Default is NONE. (compound/Compound)
+cursor=
+No default value. (cursor/Cursor)
+direction=
+Default is “below”. (direction/Direction)
+disabledforeground=
+Default is system specific. (disabledForeground/DisabledForeground)
+font=
+Default is system specific. (font/Font)
+foreground=
+Default is system specific. (foreground/Foreground)
+fg=
+Same as foreground.
+height=
+Default is 0. (height/Height)
+highlightbackground=
+Default is system specific. (highlightBackground/HighlightBackground)
+highlightcolor=
+Default is system specific. (highlightColor/HighlightColor)
+highlightthickness=
+Default is 0. (highlightThickness/HighlightThickness)
+image=
+No default value. (image/Image)
+indicatoron=
+Default is 0. (indicatorOn/IndicatorOn)
+justify=
+Default is CENTER. (justify/Justify)
+menu=
+No default value. (menu/Menu)
+padx=
+Default is ‘4p’. (padX/Pad)
+pady=
+Default is ‘3p’. (padY/Pad)
+relief=
+Default is FLAT. (relief/Relief)
+state=
+Default is NORMAL. (state/State)
+takefocus=
+Default is 0. (takeFocus/TakeFocus)
+text=
+No default value. (text/Text)
+textvariable=
+No default value. (textVariable/Variable)
+underline=
+Default is -1 (no underline). (underline/Underline)
+width=
+Default is 0. (width/Width)
+wraplength=
+Default is 0. (wrapLength/WrapLength)

@@ -1,0 +1,87 @@
+The Tkinter Frame Widget
+A frame is rectangular region on the screen. The frame widget is mainly used as a geometry master for other widgets, or to provide padding between other widgets.
+
+When to use the Frame Widget
+
+Frame widgets are used to group other widgets into complex layouts. They are also used for padding, and as a base class when implementing compound widgets.
+
+Patterns #
+
+The frame widget can be used for decorations:
+
+from Tkinter import *
+
+master = Tk()
+
+Label(text="one").pack()
+
+separator = Frame(height=2, bd=1, relief=SUNKEN)
+separator.pack(fill=X, padx=5, pady=5)
+
+Label(text="two").pack()
+
+mainloop()
+The frame widget can be used as a place holder for video overlays and other external processes.
+
+To use a frame widget in this fashion, set the background color to an empty string (this prevents updates, and leaves the color map alone), pack it as usual, and use the window_id method to get the window handle corresponding to the frame.
+
+frame = Frame(width=768, height=576, bg="", colormap="new")
+frame.pack()
+
+video.attach_window(frame.window_id())
+FIXME: add more patterns: gridded group, compound widget pattern
+
+Reference #
+
+Frame(master=None, **options) (class) [#]
+A widget container.
+
+master
+Parent widget.
+**options
+Widget options. See the description of the config method for a list of available options.
+
+config(**options) [#]
+Modifies one or more widget options. If no options are given, the method returns a dictionary containing all current option values.
+
+**options
+Widget options.
+background=
+The background color to use in this frame. This defaults to the application background color. To prevent updates, set the color to an empty string. (the option database name is background, the class is Background)
+bg=
+Same as background.
+borderwidth=
+Border width. Defaults to 0 (no border). (borderWidth/BorderWidth)
+bd=
+Same as borderwidth.
+class=
+Default is Frame. (class/Class)
+colormap=
+Some displays support only 256 colors (some use even less). Such displays usually provide a color map to specify which 256 colors to use. This option allows you to specify which color map to use for this frame, and its child widgets. 
+By default, a new frame uses the same color map as its parent. Using this option, you can reuse the color map of another window instead (this window must be on the same screen and have the same visual characteristics). You can also use the value “new” to allocate a new color map for this frame.
+You cannot change this option once you’ve created the frame. (colormap/Colormap)
+container=
+Default is 0. (container/Container)
+cursor=
+The cursor to show when the mouse pointer is placed over this widget. Default is a system specific arrow cursor. (cursor/Cursor)
+height=
+Default is 0. (height/Height)
+highlightbackground=
+Default is system specific. (highlightBackground/HighlightBackground)
+highlightcolor=
+Default value is system specific. (highlightColor/HighlightColor)
+highlightthickness=
+Default is 0. (highlightThickness/HighlightThickness)
+padx=
+Horizontal padding. Default is 0. (padX/Pad)
+pady=
+Vertical padding. Default is 0. (padY/Pad)
+relief=
+Border decoration. The default is FLAT. Other possible values are SUNKEN, RAISED, GROOVE, and RIDGE. 
+Note that to show the border, you need to change the borderwidth from its default value of 0. (relief/Relief)
+takefocus=
+If true, the user can use the Tab key to move to this widget. The default value is 0. (takeFocus/TakeFocus)
+visual=
+No default value. (visual/Visual)
+width=
+Default value is 0. (width/Width)
